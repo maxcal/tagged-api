@@ -1,6 +1,6 @@
 require "application_responder"
 
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API
   self.responder = ApplicationResponder
   respond_to :html
 

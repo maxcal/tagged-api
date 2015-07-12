@@ -12,6 +12,7 @@ gem 'pg', '~> 0.18.2'
 #=== Misc ==================================
 gem 'active_model_serializers', '~> 0.9.3'
 gem 'responders', '~> 2.1.0' # A set of Rails responders to dry up your application
+gem 'rails-api', '~> 0.4.0'
 
 group :documentation do
   gem 'yard-rails', '~> 0.3.0'
