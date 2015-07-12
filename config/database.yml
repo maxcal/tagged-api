@@ -5,21 +5,24 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: utf8
+  template: template0
+  <% if ENV["TAGGED_DB_USER"] %>
+  username: <%= ENV["TAGGED_DB_USER"] %>
+  <% end %>
+  <% if ENV["TAGGED_DB_PW"] %>
+  password: <%= ENV["TAGGED_DB_PW"] %>
+  <% end %>
+  host: <%= ENV["TAGGED_DB_HOST"] || 'localhost' %>
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: <%= ENV["TAGGED_DB_DEV"] || 'tagged_development' %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
-
-production:
-  <<: *default
-  database: db/production.sqlite3
+  database: <%= ENV["TAGGED_DB_TEST"] || 'tagged_test' %>
