@@ -27,10 +27,17 @@ group :development, :test do
   gem 'foreman'
   gem 'dotenv-rails'
   gem 'ffaker'
+
 end
 
 group :test do
   gem 'rspec-rails'
   gem 'rspec-its'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'spring-commands-rspec'
+  gem 'terminal-notifier-guard', require: false
+  gem 'libnotify', require: false
 end
