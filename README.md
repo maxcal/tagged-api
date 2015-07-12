@@ -1,28 +1,22 @@
-== README
+# Tagged!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tagged! is open source rental management system for small to tiny companies. The
+goal is to be extremely user focused and just enough system.
 
-Things you may want to cover:
+This is the API component of the project.
 
-* Ruby version
+One of the main goals is to have a highly mobile friendly interface where QR codes
+provide much of the linking between the system and real world entities.
 
-* System dependencies
+It is a JSON only API which tries to conform the the [JSONAPI](http://jsonapi.org/)
+spec.
 
-* Configuration
+## Requirements
+- Ruby 2.2.2
+- Postgresql 9.3+
 
-* Database creation
+## Developer Instructions
+Just set the app up like any other Rails app.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+You can run `spring binstub --all` to speed up your rails commands.
+Continous testing is available by running `guard`.
