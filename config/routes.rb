@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  namespace :tagged do resources :users, except: [:new, :edit] end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
