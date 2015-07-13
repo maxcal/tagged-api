@@ -10,7 +10,7 @@ gem 'puma', '~> 2.11.3' # Puma is a simple, fast, threaded, and highly concurren
 gem 'pg', '~> 0.18.2'
 
 #=== Misc ==================================
-gem 'active_model_serializers', '~> 0.9.3'
+gem 'active_model_serializers', '~> 0.10.0.rc1'
 gem 'responders', '~> 2.1.0' # A set of Rails responders to dry up your application
 gem 'rails-api', '~> 0.4.0'
 

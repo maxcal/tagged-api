@@ -11,7 +11,7 @@ module SerializerExampleGroup
     end
     let(:resource) { build_stubbed resource_name }
     let(:serializer) { described_class.new(resource) }
-    subject { serializer.serializable_hash.with_indifferent_access }
+    subject { serializer.attributes }
   end
 
   RSpec.configure do |config|
@@ -19,5 +19,4 @@ module SerializerExampleGroup
       type: :serializer,
       file_path: %r(spec/serializers)
   end
-
 end
