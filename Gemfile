@@ -14,6 +14,10 @@ gem 'active_model_serializers', '~> 0.10.0.rc1'
 gem 'responders', '~> 2.1.0' # A set of Rails responders to dry up your application
 gem 'rails-api', '~> 0.4.0'
 
+#== Security ==============================
+gem 'doorkeeper', '~> 3.0.0.rc1' # Doorkeeper is an OAuth 2 provider gem for Rails and Ruby frameworks
+gem 'omniauth', '~> 1.2.2'
+
 group :documentation do
   gem 'yard-rails', '~> 0.3.0'
 end
@@ -28,7 +32,6 @@ group :development, :test do
   gem 'foreman'
   gem 'dotenv-rails'
   gem 'ffaker'
-
 end
 
 group :test do

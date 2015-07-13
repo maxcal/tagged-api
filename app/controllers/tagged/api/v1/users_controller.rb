@@ -1,6 +1,6 @@
 
 module Tagged
-  class Api::V1::UsersController < Tagged::ApplicationController
+  class Api::V1::UsersController < Api::V1::APIController
 
     respond_to :json
 
