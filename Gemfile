@@ -16,7 +16,6 @@ gem 'rails-api', '~> 0.4.0'
 
 #== Security ==============================
 gem 'doorkeeper', '~> 3.0.0.rc1' # Doorkeeper is an OAuth 2 provider gem for Rails and Ruby frameworks
-gem 'omniauth', '~> 1.2.2'
 
 group :documentation do
   gem 'yard-rails', '~> 0.3.0'
