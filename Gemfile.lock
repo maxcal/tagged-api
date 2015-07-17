@@ -39,6 +39,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.2)
+    bcrypt (3.1.10)
     builder (3.2.2)
     coderay (1.1.0)
     database_cleaner (1.4.1)
@@ -197,6 +198,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0.rc1)
+  bcrypt
   database_cleaner
   doorkeeper (~> 3.0.0.rc1)
   dotenv-rails

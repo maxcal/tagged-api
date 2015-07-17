@@ -13,6 +13,7 @@ gem 'pg', '~> 0.18.2'
 gem 'active_model_serializers', '~> 0.10.0.rc1'
 gem 'responders', '~> 2.1.0' # A set of Rails responders to dry up your application
 gem 'rails-api', '~> 0.4.0'
+gem 'bcrypt'
 
 #== Security ==============================
 gem 'doorkeeper', '~> 3.0.0.rc1' # Doorkeeper is an OAuth 2 provider gem for Rails and Ruby frameworks
