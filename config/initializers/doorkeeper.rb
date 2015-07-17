@@ -17,6 +17,10 @@ Doorkeeper.configure do
     redirect_to root_url, alert: 'Oauth applications can only be added via command line!'
   end
 
+  resource_owner_from_credentials do
+    Tagged::User.authenticate(params[:username], params[:password])
+  end
+
   # Authorization Code expiration time (default 10 minutes).
   # authorization_code_expires_in 10.minutes
 
