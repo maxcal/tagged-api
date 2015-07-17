@@ -3,6 +3,7 @@ module Tagged
   class Api::V1::UsersController < Api::V1::APIController
 
     respond_to :json
+    before_action :doorkeeper_authorize!, except: [:create]
 
     before_action :set_user, only: INDIVIDUAL_ACTIONS
     before_action :validate_params!, only: [:update, :create]

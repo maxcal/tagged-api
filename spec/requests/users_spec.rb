@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe "User API", :type => :request do
 
-  let(:user) { create(:user) }
+RSpec.describe "Tagged! User API, v1", type: :request, access_token: true do
+
   subject { response }
-  let(:json) { JSON.parse(response.body, symbolize_names: true) unless response.body.empty? }
+  let(:user) { create(:user) }
   let(:valid_attributes) { attributes_for(:user) }
   let(:invalid_attributes) { { email: 'sdfsfdsf' } }
 
-  RSpec.shared_examples 'a JsonApi representation of a user' do |key|
+  RSpec.shared_examples 'a JsonApi representation of a user' do |key, u|
     subject { key ? json[:data].try(key) : json[:data] }
-    its([:id]){ should eq user.id.to_s }
+    its([:id]){ should eq  assigns(:user) ? assigns(:user).id.to_s : user.id.to_s }
     its([:type]){ should eq "tagged_users" }
     its([:attributes]){ should include(
       email: user.email
@@ -18,13 +18,13 @@ RSpec.describe "User API", :type => :request do
   end
 
   describe 'GET /api/v1/users/:id' do
-    before { get "/api/v1/users/#{user.id}" }
+    before { get "/api/v1/users/#{user.id}", access_token: access_token }
     it { should have_http_status :ok }
     it_behaves_like 'a JsonApi representation of a user'
   end
 
   describe 'GET /api/v1/users' do
-    before { user; get "/api/v1/users" }
+    before { user; get "/api/v1/users", access_token: access_token }
     it { should have_http_status :ok }
     it 'returns an array of users' do
       expect(json[:data]).to be_a_kind_of Array
@@ -32,13 +32,12 @@ RSpec.describe "User API", :type => :request do
     it_behaves_like 'a JsonApi representation of a user', :first
   end
 
-  describe 'POST /api/v1/users' do
-    let(:user) { assigns(:user) }
+  describe 'POST /api/v1/users', access_token: false do
     let(:payload) do |ex|
       {
         data: {
           type: 'tagged_users',
-          attributes: ex.metadata[:valid] ? valid_attributes : invalid_attributes
+          attributes: ex.metadata[:valid] ? valid_attributes : invalid_attributes,
         }
       }
     end
@@ -80,8 +79,10 @@ RSpec.describe "User API", :type => :request do
         data: {
           type: 'tagged_users',
           id: user.id,
-          attributes: ex.metadata[:valid] ? valid_attributes : invalid_attributes
-        }
+          attributes: ex.metadata[:valid] ? valid_attributes : invalid_attributes,
+
+        },
+        access_token: access_token
       }
     end
     before { patch "/api/v1/users/#{user.id}", payload }
@@ -110,9 +111,8 @@ RSpec.describe "User API", :type => :request do
 
   describe 'DELETE /api/v1/users/:id' do
     let!(:user) { create(:user) }
-    let(:action) { delete "/api/v1/users/#{user.id}" }
+    let(:action) { delete "/api/v1/users/#{user.id}", access_token: access_token }
     before { |ex| action unless ex.metadata[:skip_action] }
-
     it 'destroys the user', skip_action: true do
       expect {
          action

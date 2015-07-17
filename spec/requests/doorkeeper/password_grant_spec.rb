@@ -1,9 +1,7 @@
 require 'rails_helper'
-require 'json'
 
 RSpec.describe 'Doorkeeper Password Grants', :type => :request do
   subject { response }
-  let(:json) { JSON.parse(response.body, symbolize_names: true )}
 
   describe 'POST /oauth/token' do
     let(:user) { create(:user) }

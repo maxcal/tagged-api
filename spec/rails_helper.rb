@@ -37,6 +37,9 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.infer_spec_type_from_file_location!
 
+  require 'support/example_groups/authorized'
+  require 'support/example_groups/json'
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation, pre_count: true)
     DatabaseCleaner.strategy = :truncation
