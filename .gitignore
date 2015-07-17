@@ -19,3 +19,6 @@
 # ignore generated documentation.
 .yardoc
 doc
+
+# Ignore local config
+.env
